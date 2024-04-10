@@ -1,0 +1,20 @@
+//************************************************************************************************************************ */
+The Context API in React addresses the issue of prop drilling, where components need to pass data through multiple levels of their component tree. By providing a centralized way to share data across components without the need for explicit prop passing, the Context API streamlines state management and improves code maintainability. It enables developers to create cleaner and more efficient code by eliminating the verbosity and potential errors associated with manual prop passing, especially in deeply nested component structures. Additionally, it facilitates global state management, allowing components to access shared data or state without the need for complex hierarchical communication. Overall, the Context API enhances the scalability and readability of React applications by providing a mechanism for efficient data sharing and state management.  
+//************************************************************************************************************************ */
+
+
+> first create a context folder
+
+> create a context.js file 
+> create andexport context using createContext() 
+
+> create another file  that will provide a wrapper around different pages and components UserContextProvider.jsx 
+> import the context which you created earlier and use .Provider function to create the provider 
+> pass on the value in provider to share the value of global state and function to change that state 
+
+> now wrap the pages in app.jsx(or main.jsx) around userContextProvider to give the acces to the context and global state.
+
+> to use the context in different page/component:
+> use useContext with the context to get access to the global state as like:
+    const {user, setUser} = useContext(UserContext);
+
