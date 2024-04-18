@@ -5,7 +5,8 @@ import { removeTodo } from '../features/todo/todoSlice'
 
 const Todos = () => {
 
-    const todos = useSelector(state => state.todos);
+    const todos = useSelector(state => state.todos); // const initialState = {todos: [ {id:1, text: "hello world"}] }
+    
     const dispatch = useDispatch();
     
   return (

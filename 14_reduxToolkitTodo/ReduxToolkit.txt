@@ -1,6 +1,8 @@
 Redux is an independent state management library
 for using it with react we have react-Redux
 
+// redux is a core library and react redux is implementation of redux for its wiring witj react
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -59,19 +61,57 @@ useDispatch: React Redux hook used in functional components to dispatch actions 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-> create a store.js file inside a App folder inside the src
+> create a store.js [one website can only have 1 store] file inside a App folder inside the src
 ::: import {configureStore} from '@reduxjs/toolkit'
 ::: export const store = configureStore({});
 
-> now we'll create slices (todoSlice.js) for the different functionality
+> now we'll create slices (todoSlice.js) [slices are just features] for the different functionality
  [slices are a way to organize your Redux store and reducers. Slices allow you to encapsulate related logic and state into smaller, more manageable pieces.] 
 --> we'll use createSlice to make the slice it'll take 3parameters : name of the slice, initial state [generally object] and reducers [object of multiple functions]  
 // the function in reducers will always get acces to 2 things state and action. state gives access to the current state of our initial state[In RTK, the state refers to the current snapshot of your application's data.]. while actions describe the changes that need to be made to that state.
- 
+
+*********************************************************************
 --> export the slice and the reducers independently as it is:
 // export const {addTodo, removeTodo, updateTodo} = todoSlice.actions;
 // export default todoSlice.reducer; 
 // export const todoSlice = createSlice(.....)
+*********************************************************************
+
+now import the todoSlice.reducer in store.js and give it inside configureStore as follows:
+export const store = configureStore({
+    reducer: todoReducer
+});
+
+
+>>> useDispatch is used to access the dispatch function, which allows you to trigger actions that will be handled by reducers, typically defined within slices.
+
+>>> useSelector is used to extract specific pieces of state from the Redux store, which includes the state managed by reducers, often organized within slices.
+useSelector is another hook provided by React Redux that allows your React components to extract data from the Redux store. 
+[it have acces to our state that we defined in slices]
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+now to access the reducers in component(AddTodo.jsx) use useDispatch:
+
+*    const [input, setInput] = useState("");
+*    const dispatch = useDispatch();
+*    // *** dispatch uses a reducer to do changes in the store. ***
+*    
+*    const addTodoHandler = (e)=>{
+*        e.preventDefault();
+*        dispatch(addTodo(input));
+*        setInput("");
+*    }
+
+
+similary to acces the state we'll use useSelector in Todo.jsx:
+
+*    const todos = useSelector(state => state.todos); 
 
 
 
+at the end wrap the App inside main.jsx with Provider and give it store:
+*  <Provider store={store}>
+*    <App />
+*  </Provider>, 
+   

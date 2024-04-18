@@ -5,9 +5,9 @@ import { addTodo } from '../features/todo/todoSlice';
 
 const AddTodos = () => {
 
-    consgt [input, setInput] = useState("");
+    const [input, setInput] = useState("");
     const dispatch = useDispatch();
-    // dispatch uses a reducer to do changes in the store.
+    // *** dispatch uses a reducer to do changes in the store. ***
     
     const addTodoHandler = (e)=>{
         e.preventDefault();
