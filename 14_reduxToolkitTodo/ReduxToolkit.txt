@@ -1,0 +1,77 @@
+Redux is an independent state management library
+for using it with react we have react-Redux
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+what is difference between using Redux(react redux) and context api
+
+ChatGPT
+Redux and the Context API are both tools in React for managing state, but they have different purposes and use cases.
+
+Redux:
+
+Redux is a predictable state container for JavaScript apps, most commonly used with React.
+It provides a centralized store where the entire state of your application is kept.
+Redux follows a unidirectional data flow pattern, making it easier to understand how data changes occur in your application.
+Actions are dispatched to update the state, and reducers are used to specify how the state should change in response to actions.
+Redux is particularly useful for large-scale applications with complex state management needs, such as applications with deeply nested components or where different parts of the UI need to react to the same state changes.
+Context API:
+
+The Context API is a part of React that provides a way to pass data through the component tree without having to pass props down manually at every level.
+It is primarily used for sharing data that can be considered global or "ambient" data, such as user authentication status, theme preferences, or language preferences.
+The Context API is simpler to use than Redux and is often favored for simpler applications or for cases where Redux might be seen as overkill.
+However, the Context API doesn't inherently provide tools for managing complex state changes, middleware, or time-travel debugging like Redux does.
+In summary, Redux is a powerful state management library suitable for large-scale applications with complex state needs, while the Context API is a simpler built-in feature of React that is useful for sharing global data across components, but lacks some of the advanced features provided by Redux. The choice between them often depends on the specific requirements and complexity of your application. Additionally, some applications may even use both, with Redux for managing complex state and the Context API for sharing certain global data.
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+REDUX TOOLKIT:
+
+Here are some key features of Redux Toolkit:
+
+> Simplified store setup: Redux Toolkit includes a configureStore function that combines several Redux middleware and settings commonly used in Redux applications, such as Redux Thunk for handling asynchronous actions and Redux DevTools Extension for debugging.
+
+> Immutable state updates: Redux Toolkit uses the Immer library internally to allow for writing reducers that mutate state in a more intuitive and straightforward way, without needing to worry about immutability.
+
+> Simplified reducer syntax: Redux Toolkit provides a createSlice function that allows developers to define a slice of state along with its reducers in a more concise and readable way. This helps reduce boilerplate code typically associated with writing Redux reducers.
+
+> Built-in support for immutable updates: Redux Toolkit includes utility functions such as createReducer and createAction to further simplify the process of defining reducers and actions.
+
+> Redux DevTools Extension integration: Redux Toolkit is designed to work seamlessly with the Redux DevTools Extension, making it easier to debug and inspect the state of your application during development.
+
+Overall, Redux Toolkit aims to streamline Redux development by providing a set of opinionated tools and best practices, reducing the amount of boilerplate code and making it easier to write and maintain Redux applications. It is recommended by the Redux team as the preferred way to write Redux code for most applications.
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+Store: Centralized container for application state in Redux. It holds the entire state tree of your app.
+
+Reducer: Function that describes how state changes in response to dispatched actions. It takes current state and an action, returning the new state.
+
+useSelector: React Redux hook used in functional components to extract data from the Redux store's state. It subscribes the component to updates to selected parts of the Redux store.
+
+useDispatch: React Redux hook used in functional components to dispatch actions to the Redux store. It provides access to the dispatch function, allowing components to trigger state changes.
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+> create a store.js file inside a App folder inside the src
+::: import {configureStore} from '@reduxjs/toolkit'
+::: export const store = configureStore({});
+
+> now we'll create slices (todoSlice.js) for the different functionality
+ [slices are a way to organize your Redux store and reducers. Slices allow you to encapsulate related logic and state into smaller, more manageable pieces.] 
+--> we'll use createSlice to make the slice it'll take 3parameters : name of the slice, initial state [generally object] and reducers [object of multiple functions]  
+// the function in reducers will always get acces to 2 things state and action. state gives access to the current state of our initial state[In RTK, the state refers to the current snapshot of your application's data.]. while actions describe the changes that need to be made to that state.
+ 
+--> export the slice and the reducers independently as it is:
+// export const {addTodo, removeTodo, updateTodo} = todoSlice.actions;
+// export default todoSlice.reducer; 
+// export const todoSlice = createSlice(.....)
+
+
+
