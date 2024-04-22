@@ -1,0 +1,47 @@
+React Router DOM is a 3rd party library that enables navigation and routing functionality in React applications. It's built on top of React and allows developers to create single-page applications (SPAs) with multiple views, each representing a different URL endpoint.
+
+
+> npm i react-router-dom 
+
+create different components[also header{read header.jsx for more understanding} and footer and home page]
+
+>> Link and NavLink: These components are used to create links between different views in your application. They generate HTML anchor (<a>) elements that, when clicked, change the URL without causing a full page reload.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//<a> tag: When using the anchor tag, clicking on the link usually triggers a full page reload unless you explicitly handle navigation via JavaScript to prevent the default behavior.
+//Link component: The Link component in react-router-dom handles navigation within the React application without causing a full page reload. It updates the URL and renders the appropriate component based on the route without reloading the entire page.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+to assemble all the 3 component(header, footer and home) in one view, we'll create layout[in Layout.jsx] 
+
+to assemble them we'll use concept of outlet in our Layout.jsx
+
+-------------------------------------------------------------------------------------------------------------------------
+In React Router DOM, Outlet is a component used within nested routes. It acts as a placeholder where child routes are rendered.
+
+When you have a parent route component that renders child routes, you place the Outlet component within the parent component's JSX. This tells React Router where to render the child routes within the parent's layout.
+-------------------------------------------------------------------------------------------------------------------------
+
+now we need to create Router and Routes in our main.jsx to tell react about how we want to render our pages for different routes [Instead of App we'll pass our RouterProvider and custom built  Router in our RouterProvider()].
+
+
+*const router = createBrowserRouter(
+*  createRoutesFromElements(
+*    <Route path='/' element={<Layout />}>
+*      <Route path='' element={<Home />} />
+*      <Route path='about' element={<About />} />
+*      <Route path='contact' element={<Contact />} />
+*      <Route path='user/:userId' element={<User />} />
+*      <Route 
+*        loader={githubInfoLoader}
+*        path='github' 
+*        element={<Github/>} 
+*      />
+*    </Route>
+*  )
+*)
+
+
+
+
