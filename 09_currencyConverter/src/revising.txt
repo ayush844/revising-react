@@ -1,0 +1,8 @@
+add a folder named hooks to keep all our hooks at one place.
+
+hooks are just simple functions that return something. [make the hooks file .js since in most of the cases we use only javascript] 
+
+in our custom hooks we can also use the hooks of reactJS.
+
+
+[study inputBox.jsx and App.jsx carefully]
