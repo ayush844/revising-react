@@ -7,14 +7,41 @@ The Context API in React addresses the issue of prop drilling, where components 
 
 > create a context.js file 
 > create andexport context using createContext() 
+|| const UserContext = React.createContext();
+
 
 > create another file  that will provide a wrapper around different pages and components UserContextProvider.jsx 
 > import the context which you created earlier and use .Provider function to create the provider 
 > pass on the value in provider to share the value of global state and function to change that state 
 
+
+||const UserContextProvider = ({children}) => {
+||
+||    const [user, setUser] = React.useState(null);
+||
+||  return (
+||    <UserContext.Provider value={{user, setUser}}>
+||        {children}
+||    </UserContext.Provider>
+||  )
+||}
+
+
 > now wrap the pages in app.jsx(or main.jsx) around userContextProvider to give the acces to the context and global state.
+
+||    <UserContextProvider>
+||      <h1>hello</h1>
+||
+||      <Login />
+||      <Profile />
+||      
+||    </UserContextProvider>
+
+
 
 > to use the context in different page/component:
 > use useContext with the context to get access to the global state as like:
+
     const {user, setUser} = useContext(UserContext);
 
+in <Login /> and <Profile />
