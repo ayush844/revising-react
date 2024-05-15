@@ -6,10 +6,27 @@ here we'll learn about different way of using context.
 > Inside this file we'll create context(ThemeContext) and give it some default values, also in the same file create provider for the context (here, we'll not give value to the provider here)
 > now create a custom hook in the file that will return useContext(ThemeContext)
 
+|| import { createContext, useContext } from "react";
+|| 
+|| export const ThemeContext = createContext({
+||     themeMode: 'light',
+||     darkTheme: ()=>{},
+||     lightTheme: ()=>{}
+|| });
+|| 
+|| export const ThemeProvider = ThemeContext.Provider;
+|| 
+|| export default function useTheme(){
+||     return useContext(ThemeContext)
+|| }
 
-> Now go to ap.jsx and wrap content with ThemeProvider, also get acces to the the values (value={{themeMode, darkTheme, lightTheme}}) 
+
+> Now go to app.jsx and wrap content with ThemeProvider, also get acces to the the values (value={{themeMode, darkTheme, lightTheme}}) 
+
+
 > now take the values which have taken through provider and write the functions with the same name so that the functionality will automatically go inside the provider values 
 > [now change theme using useEffect as done in appp.jsx]
+
 
 > for using the theme context:
 > import {themeMode, darkTheme, lightTheme} our custom hook(useTheme) and do the changes to switch to different color modes
